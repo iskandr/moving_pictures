@@ -1,4 +1,3 @@
-
 import math 
 import os
 import shutil
@@ -42,7 +41,7 @@ def resize(img, target_size = 300):
 
 def make_movie(images, movie_name = 'movie.mpg', 
                overwrite = True, 
-               n_interpolation_frames = 2,
+               n_interpolation_frames = 1,
                frame_rate = 30, 
                bitrate = '5000k'):
 
