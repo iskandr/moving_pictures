@@ -5,7 +5,7 @@ Create a movie from a sequence of images in Python (uses PIL and ffmpeg). The im
 
 Installation:
 
-	pip install moving\_pictures
+	pip install moving_pictures
 
 Requires:
 
@@ -15,8 +15,8 @@ Requires:
   * [progressbar](https://code.google.com/p/python-progressbar/)
 
 Usage:
-        start = np.random.randn(200,200) > 0
-        stop = np.random.randn(200,200) > 0
+        start = Image.open('start.png')
+        stop = np.array(image)
         images = []
         for step_size in np.arange(0,1,0.001):
           images.append(start*step_size + stop*(1-step_size))
