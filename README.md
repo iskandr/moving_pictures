@@ -15,5 +15,6 @@ Requires:
   * [progressbar](https://code.google.com/p/python-progressbar/)
 
 Usage:
+
 	moving\_pictures.make\_movie(list\_of\_images, movie\_name="gonzo.mpg") 
     
