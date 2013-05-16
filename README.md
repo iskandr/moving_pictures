@@ -15,6 +15,7 @@ Requires:
   * [progressbar](https://code.google.com/p/python-progressbar/)
 
 Usage:
+
         start = Image.open('start.png')
         stop = np.array(image)
         images = []
