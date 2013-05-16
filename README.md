@@ -22,5 +22,5 @@ Usage:
         
         for step_size in np.arange(0,1,0.001):
         	images.append(start*step_size + stop*(1-step_size))
-        moving_pictures.make_movie(images, movie_name="random_blend.mpg") 
+        moving_pictures.make_movie(images, movie_name="blend.mpg") 
     
