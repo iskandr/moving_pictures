@@ -19,9 +19,14 @@ def ensure_ffmpeg():
   except:
     assert False, "Can't find ffmpeg"
 
-def image_from_array(image):
+def image_from_array(image, normalize=False):
   if isinstance(image, np.ndarray):
-    image = Image.fromarray( (256 * image / image.max()).astype('uint8'))
+    maxval = image.max()
+    if maxval <= 1:
+      image *= 256 
+    if normalize:
+      image /= maxval 
+    image = Image.fromarray(image.astype('uint8'))
   assert Image.isImageType(image)
   return image 
 
@@ -35,11 +40,11 @@ def resize(img, target_size = 300):
   ratio = max( float(target_size) / width, float(target_size) / height) 
   return img.resize( (int(width * ratio), int(height * ratio)), Image.ANTIALIAS)
 
-def images_to_movie(images, movie_name = 'movie.mpg', 
-                    overwrite = True, 
-                    n_interpolation_frames = 8,
-                    frame_rate = 30, 
-                    bitrate = '3000k'):
+def make_movie(images, movie_name = 'movie.mpg', 
+               overwrite = True, 
+               n_interpolation_frames = 2,
+               frame_rate = 30, 
+               bitrate = '5000k'):
 
   """
   Takes a list of images, writes them to disk, uses ffmpeg to
@@ -51,9 +56,11 @@ def images_to_movie(images, movie_name = 'movie.mpg',
     base = tempfile.mkdtemp()
 
     n = len(images)
-    total = 1 + (n-1)*(n_interp_frames+1)
+    total = 1 + (n-1)*(n_interpolation_frames+1)
+
     n_digits = int(math.ceil(np.log10(total)))
     format_string = "img%%0%dd.png" % n_digits
+    print "Writing %d images" % total 
     progress = progressbar.ProgressBar(maxval=total).start()
     last_image = None 
     def write_image(image):
