@@ -5,7 +5,7 @@ Create a movie from a sequence of images in Python (uses PIL and ffmpeg). The im
 
 Installation:
 
-   pip install moving\_pictures
+	pip install moving\_pictures
 
 Requires:
 
@@ -15,6 +15,5 @@ Requires:
   * [progressbar](https://code.google.com/p/python-progressbar/)
 
 Usage:
-
-  moving\_pictures.make\_movie(list\_of\_images, movie\_name="gonzo.mpg") 
+	moving\_pictures.make\_movie(list\_of\_images, movie\_name="gonzo.mpg") 
     
